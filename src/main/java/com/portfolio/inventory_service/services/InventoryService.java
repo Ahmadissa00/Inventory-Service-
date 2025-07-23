@@ -9,6 +9,7 @@ import com.portfolio.inventory_service.entity.Event;
 import com.portfolio.inventory_service.repository.EventRepository;
 import com.portfolio.inventory_service.repository.VenueRepository;
 import com.portfolio.inventory_service.response.EventInventoryResponse;
+import com.portfolio.inventory_service.response.VenueInventoryResponse;
 
 @Service
 public class InventoryService {
@@ -25,8 +26,21 @@ public class InventoryService {
 		final List<Event> events = eventRepository.findAll();
    
 	    return events.stream()
-	    		.map(event -> EventInventoryResponse.)
+	    		.map(event -> EventInventoryResponse.builder()
+	    				.event(event.getName())
+	    				.venue(event.getVenue())
+	    				.capacity(event.getLeftCapacity())
+	    				.build()).collect(Collectors.toList());
 }
+
+	public VenueInventoryResponse getVenueInformation(Long venueId) {
+		final var venue = venueRepository.findById(venueId);
+		return VenueInventoryResponse.builder()
+				.venueId(venue.get().getId())
+				.venueName(venue.get().getName())
+				.capacity(venue.get().getTotal_capacity())
+				.build();
+	}
 
 
 }
