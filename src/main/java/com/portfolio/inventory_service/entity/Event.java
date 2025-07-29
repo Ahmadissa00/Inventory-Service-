@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor 
-@Table(name = "events")
+@Table(name = "event")
 public class Event {
 	
 
@@ -27,7 +27,7 @@ public class Event {
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "city")
+	@Column(name = "total_capacity")
 	private int total_capacity;
 	
 	@Column(name = "left_capacity")
