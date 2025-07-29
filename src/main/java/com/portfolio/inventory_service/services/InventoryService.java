@@ -43,4 +43,18 @@ public class InventoryService {
 	}
 
 
+	public EventInventoryResponse EventInvetoryResponse(final Long eventId) {
+			final var event = eventRepository.findById(eventId);
+	if (event.isEmpty()) {
+		throw new RuntimeException("Event not found with ID: " + eventId);
+	}
+
+	return EventInventoryResponse.builder()
+			.event(event.get().getName())
+			.venue(event.get().getVenue())
+			.capacity(event.get().getLeftCapacity())
+			.eventId(event.get().getId())
+			.ticketPrice(event.get().getTicketPrice())
+			.build();
+	}
 }

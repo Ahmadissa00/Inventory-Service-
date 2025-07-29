@@ -11,6 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -37,5 +39,7 @@ public class Event {
 	@JoinColumn(name = "venue_id", referencedColumnName = "id")
 	private Venue venue;
 
+	@Column(name = "ticket_price")
+	private BigDecimal ticketPrice;
 
 }
