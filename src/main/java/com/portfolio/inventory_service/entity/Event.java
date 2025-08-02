@@ -30,10 +30,10 @@ public class Event {
 	private String name;
 	
 	@Column(name = "total_capacity")
-	private int total_capacity;
+	private Long total_capacity;
 	
 	@Column(name = "left_capacity")
-	private int leftCapacity;
+	private Long leftCapacity;
 	
 	@ManyToOne
 	@JoinColumn(name = "venue_id", referencedColumnName = "id")
